@@ -6,8 +6,8 @@ ENV PGDATA /var/lib/postgresql/data
 ENV PGUSER postgres
 ENV PG_VERSION 9.4
 VOLUME /var/lib/postgresql/data
-COPY commands.sh /docker-entrypoint-initdb.d/
-COPY docker-entrypoint.sh /
+ADD commands.sh /docker-entrypoint-initdb.d/
+ADD docker-entrypoint.sh /
 
 RUN apt-get update && \
     apt-get install -y locales && \
