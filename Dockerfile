@@ -19,11 +19,12 @@ RUN apt-get update && \
     apt-get install -y python-pip python-dev libpq-dev nginx libjpeg-dev libfreetype6-dev zlib1g-dev libpng12-dev nano sudo && \
     rm -rf /var/lib/apt/lists/*
 
-RUN cd /var/www && pip install -r requirements.txt
+RUN pip install Django==1.8.4 && \
+    pip install psycopg2 && \
+    pip install Pillow
 
 EXPOSE 8000
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["django"]
-

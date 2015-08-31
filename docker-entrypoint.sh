@@ -88,6 +88,7 @@ if [ "$1" = 'setup' ]; then
 	sudo -E -u postgres /usr/lib/postgresql/9.4/bin/postgres -D $PGDATA &
 
 	cd /var/www/
+	pip install -r requirements.txt
 	python manage.py makemigrations
 	python manage.py migrate auth
 	python manage.py migrate
